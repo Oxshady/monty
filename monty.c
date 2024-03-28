@@ -12,6 +12,10 @@ instruction_t operations[] = {
 	{"pint", &_pint},
 	{"swap", &_swap},
 	{"add", &_add},
+	{"sub", &_sub},
+	{"div", &_div},
+	{"mul", &_mul},
+	{"mod", &_mod},
 	{NULL, NULL}};
 
 stack_t *stack = NULL;
@@ -156,6 +160,58 @@ int main(int argc, char **argv)
 				while (operations[co].opcode != NULL)
 				{
 					if (strcmp(operations[co].opcode, "add") == 0)
+					{
+						operations[co].f(&stack, line);
+						break;
+					}
+					co++;
+				}
+				co = 0;
+			}
+				else if (strcmp(tokens[t], "sub") == 0)
+			{
+				while (operations[co].opcode != NULL)
+				{
+					if (strcmp(operations[co].opcode, "sub") == 0)
+					{
+						operations[co].f(&stack, line);
+						break;
+					}
+					co++;
+				}
+				co = 0;
+			}
+				else if (strcmp(tokens[t], "div") == 0)
+			{
+				while (operations[co].opcode != NULL)
+				{
+					if (strcmp(operations[co].opcode, "div") == 0)
+					{
+						operations[co].f(&stack, line);
+						break;
+					}
+					co++;
+				}
+				co = 0;
+			}
+			else if (strcmp(tokens[t], "mul") == 0)
+			{
+				while (operations[co].opcode != NULL)
+				{
+					if (strcmp(operations[co].opcode, "mul") == 0)
+					{
+						operations[co].f(&stack, line);
+						break;
+					}
+					co++;
+				}
+				co = 0;
+			}
+			else if (strcmp(tokens[t], "mod") == 0)
+			{
+				while (operations[co].opcode != NULL)
+				{
+					if (strcmp(operations[co].opcode, "mod") == 0)
 					{
 						operations[co].f(&stack, line);
 						break;

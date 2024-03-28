@@ -1,8 +1,4 @@
-push 1
-push 1
-push 1
-push 1
-push 1214
-add
-swap
+push 2
+push 2
+mul
 pall
