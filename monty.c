@@ -9,6 +9,7 @@ int arr[MAX_LINE_CHARS];
 instruction_t operations[] = {
     {"push", &_push},
     {"pall", &_pall},
+    {"pint", &_pint},
     {NULL, NULL}
 };
 
@@ -110,6 +111,19 @@ int main(int argc, char **argv)
                 while (operations[co].opcode != NULL)
                 {
                     if (strcmp(operations[co].opcode, "pall") == 0)
+                    {
+                        operations[co].f(&stack, line);
+                        break;
+                    }
+                    co++;
+                }
+                co = 0;
+            }
+            else if (strcmp(tokens[t], "pint") == 0)
+            {
+                while (operations[co].opcode != NULL)
+                {
+                    if (strcmp(operations[co].opcode, "pint") == 0)
                     {
                         operations[co].f(&stack, line);
                         break;
