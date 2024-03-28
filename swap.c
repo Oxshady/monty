@@ -2,13 +2,13 @@
 /**
  * _swap - function that swaps the top two elements of the stack
  * @top: pointer to pointer to the top of the stack
+ * @num: line number
  */
 void _swap(stack_t **top, unsigned int num)
 {
 	stack_t *n1 = NULL;
 	stack_t *n2 = NULL;
 
-	(void) num;
 	if (*top != NULL && (*top)->next != NULL)
 	{
 		n1 = *top;
@@ -23,5 +23,10 @@ void _swap(stack_t **top, unsigned int num)
 		{
 			n1->next->prev = n1;
 		}
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", num);
+		exit(EXIT_FAILURE);
 	}
 }
