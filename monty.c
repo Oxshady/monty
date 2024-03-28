@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 char buffer[MAX_LINE_CHARS];
 int arr[MAX_LINE_CHARS];
 
@@ -70,46 +69,43 @@ int main(int argc, char **argv)
         tokens[t] = strtok(buffer, " \t\n");
         while (tokens[t] != NULL)
         {
-            char *trimmed_token = tokens[t];
-            while (isspace(*trimmed_token))
+            if (tokens[t][0] != '\0' && !isspace(*tokens[t]))
             {
-                trimmed_token++;
-            }
-
-            if (strcmp(trimmed_token, "push") == 0)
-            {
-                t++;
-                tokens[t] = strtok(NULL, " \t\n");
-                if (tokens[t] != NULL)
+                if (strcmp(tokens[t], "push") == 0)
                 {
-                    char *endptr;
-                    long num = strtol(tokens[t], &endptr, 10);
-                    if (*endptr == '\0' && !isspace(*tokens[t]))
+                    t++;
+                    tokens[t] = strtok(NULL, " \t\n");
+                    if (tokens[t] != NULL)
                     {
-                        while (operations[co].opcode != NULL)
+                        char *endptr;
+                        long num = strtol(tokens[t], &endptr, 10);
+                        if (*endptr == '\0' && !isspace(*tokens[t]))
                         {
-                            if (strcmp(operations[co].opcode, "push") == 0)
+                            while (operations[co].opcode != NULL)
                             {
-                                operations[co].f(&stack, num);
-                                break;
+                                if (strcmp(operations[co].opcode, "push") == 0)
+                                {
+                                    operations[co].f(&stack, num);
+                                    break;
+                                }
+                                co++;
                             }
-                            co++;
+                            co = 0;
                         }
-                        co = 0;
+                        else
+                        {
+                            fprintf(stderr, "Error: Invalid number at line %d\n", line);
+                            exit(EXIT_FAILURE);
+                        }
                     }
                     else
                     {
-                        fprintf(stderr, "Error: Invalid number at line %d\n", line);
+                        fprintf(stderr, "Error: No argument provided for push at line %d\n", line);
                         exit(EXIT_FAILURE);
                     }
                 }
-                else
-                {
-                    fprintf(stderr, "Error: No argument provided for push at line %d\n", line);
-                    exit(EXIT_FAILURE);
-                }
             }
-            else if (strcmp(trimmed_token, "pall") == 0)
+            if (strcmp(tokens[t], "pall") == 0)
             {
                 while (operations[co].opcode != NULL)
                 {
@@ -134,5 +130,5 @@ int main(int argc, char **argv)
     }
     free(strings);
     free_stack(&stack);
-    return 0;
+    return (0);
 }
