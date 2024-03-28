@@ -43,4 +43,9 @@ void _pall(stack_t **top, unsigned int num);
 void free_stack(stack_t **top);
 void _pint(stack_t **top, unsigned int num);
 void _swap(stack_t **top, unsigned int num);
+void _mul(stack_t **top, unsigned int num);
+void _add(stack_t **top, unsigned int num);
+void _sub(stack_t **top, unsigned int num);
+void _div(stack_t **top, unsigned int num);
+void _mod(stack_t **top, unsigned int num);
 #endif
