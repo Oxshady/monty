@@ -10,6 +10,7 @@ instruction_t operations[] = {
 	{"push", &_push},
 	{"pall", &_pall},
 	{"pint", &_pint},
+	{"swap", &_swap},
 	{NULL, NULL}};
 
 stack_t *stack = NULL;
@@ -128,6 +129,19 @@ int main(int argc, char **argv)
 				while (operations[co].opcode != NULL)
 				{
 					if (strcmp(operations[co].opcode, "pint") == 0)
+					{
+						operations[co].f(&stack, line);
+						break;
+					}
+					co++;
+				}
+				co = 0;
+			}
+			else if (strcmp(tokens[t], "swap") == 0)
+			{
+				while (operations[co].opcode != NULL)
+				{
+					if (strcmp(operations[co].opcode, "swap") == 0)
 					{
 						operations[co].f(&stack, line);
 						break;
