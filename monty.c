@@ -1,4 +1,3 @@
-
 #include "monty.h"
 #include <ctype.h>
 #include <stdio.h>
@@ -71,7 +70,6 @@ int main(int argc, char **argv)
         tokens[t] = strtok(buffer, " \t\n");
         while (tokens[t] != NULL)
         {
-            // Trim leading whitespace from the token
             char *trimmed_token = tokens[t];
             while (isspace(*trimmed_token))
             {
