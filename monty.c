@@ -69,6 +69,8 @@ int main(int argc, char **argv)
 		tokens[t] = strtok(buffer, " \t\n");
 		while (tokens[t] != NULL)
 		{
+			if (tokens[t][0] != '\0')
+			{
 			if (strcmp(tokens[t], "push") == 0)
 			{
 				t++;
@@ -88,6 +90,7 @@ int main(int argc, char **argv)
 							}
 							co++;
 						}
+						co = 0;
 					}
 					else
 					{
@@ -112,6 +115,8 @@ int main(int argc, char **argv)
 					}
 					co++;
 				}
+				co = 0;
+			}
 			}
 			t++;
 		}
