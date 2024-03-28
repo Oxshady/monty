@@ -12,6 +12,7 @@ void _sub(stack_t **top, unsigned int num)
 
 	if (*top != NULL && (*top)->next != NULL)
 	{
+
 		sub = (*top)->n - (*top)->next->n;
 
 		(*top)->n = sub;
@@ -24,7 +25,7 @@ void _sub(stack_t **top, unsigned int num)
 	}
 	else
 	{
-		fprintf(stderr, "L%u: can't add, stack too short\n", num);
+		fprintf(stderr, "L%u: can't sub, stack too short\n", num);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -40,6 +41,11 @@ void _div(stack_t **top, unsigned int num)
 
 	if (*top != NULL && (*top)->next != NULL)
 	{
+		if ((*top)->next->n == 0)
+		{
+			fprintf(stderr, "L%u: division by zero\n", num);
+			exit(EXIT_FAILURE);
+		}
 		div = (*top)->n / (*top)->next->n;
 
 		(*top)->n = div;
@@ -52,7 +58,7 @@ void _div(stack_t **top, unsigned int num)
 	}
 	else
 	{
-		fprintf(stderr, "L%u: can't add, stack too short\n", num);
+		fprintf(stderr, "L%u: can't div, stack too short\n", num);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -68,6 +74,11 @@ void _mod(stack_t **top, unsigned int num)
 
 	if (*top != NULL && (*top)->next != NULL)
 	{
+		if ((*top)->next->n == 0)
+		{
+			fprintf(stderr, "L%u: division by zero\n", num);
+			exit(EXIT_FAILURE);
+		}
 		mod = (*top)->n % (*top)->next->n;
 
 		(*top)->n = mod;
@@ -80,7 +91,7 @@ void _mod(stack_t **top, unsigned int num)
 	}
 	else
 	{
-		fprintf(stderr, "L%u: can't add, stack too short\n", num);
+		fprintf(stderr, "L%u: can't mod, stack too short\n", num);
 		exit(EXIT_FAILURE);
 	}
 }

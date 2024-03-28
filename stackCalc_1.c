@@ -52,7 +52,7 @@ void _mul(stack_t **top, unsigned int num)
 	}
 	else
 	{
-		fprintf(stderr, "L%u: can't add, stack too short\n", num);
+		fprintf(stderr, "L%u: can't mul, stack too short\n", num);
 		exit(EXIT_FAILURE);
 	}
 }
