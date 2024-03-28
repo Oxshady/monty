@@ -39,4 +39,5 @@ typedef struct instruction_s
 void _push(stack_t **top, unsigned int data);
 void _pop(stack_t **top, unsigned int line_number);
 void _pall(stack_t **top, unsigned int num);
+void free_stack(stack_t **top);
 #endif

@@ -124,12 +124,7 @@ int main(int argc, char **argv)
 		free(strings[j]);
 	}
 	free(strings);
-	while (stack != NULL)
-	{
-		stack_t *tmp = stack;
-		stack = stack->next;
-		free(tmp);
-	}
-
+	free_stack(&stack);
 	return 0;
 }
+

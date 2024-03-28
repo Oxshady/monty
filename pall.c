@@ -7,14 +7,14 @@
 void _pall(stack_t **top, unsigned int num)
 {
 	stack_t *tmp = *top;
-
 	(void)num;
+
 	if (*top == NULL)
 		return;
-	while (*top)
+	while (tmp != NULL)
 	{
-		tmp = *top;
-		(*top) = (*top)->next;
 		printf("%i\n", tmp->n);
+		tmp = tmp->next;
 	}
 }
+
