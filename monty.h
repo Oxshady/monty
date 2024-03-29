@@ -48,4 +48,5 @@ void _add(stack_t **top, unsigned int num);
 void _sub(stack_t **top, unsigned int num);
 void _div(stack_t **top, unsigned int num);
 void _mod(stack_t **top, unsigned int num);
+void _pchar(stack_t **top, unsigned int num);
 #endif
