@@ -1,4 +1,9 @@
 #include "monty.h"
+/**
+ * _pchar - prints the char at the top of the stack
+ * @top: pointer to pointer to the top of stack
+ * @num: line number
+*/
 void _pchar(stack_t **top, unsigned int num)
 {
 	if ((*top) != NULL)
