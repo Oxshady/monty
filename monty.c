@@ -19,6 +19,7 @@ instruction_t operations[] = {
 	{"pchar", &_pchar},
 	{"pstr", &_pstr},
 	{"pstr", &_rotl},
+	{"rotr", &_rotr},
 	{NULL, NULL}};
 
 stack_t *stack = NULL;
@@ -254,6 +255,19 @@ int main(int argc, char **argv)
 				while (operations[co].opcode != NULL)
 				{
 					if (strcmp(operations[co].opcode, "rotl") == 0)
+					{
+						operations[co].f(&stack, line);
+						break;
+					}
+					co++;
+				}
+				co = 0;
+			}
+			else if (strcmp(tokens[t], "rotr") == 0)
+			{
+				while (operations[co].opcode != NULL)
+				{
+					if (strcmp(operations[co].opcode, "rotr") == 0)
 					{
 						operations[co].f(&stack, line);
 						break;

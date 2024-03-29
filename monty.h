@@ -51,4 +51,5 @@ void _mod(stack_t **top, unsigned int num);
 void _pchar(stack_t **top, unsigned int num);
 void _pstr(stack_t **top, unsigned int num);
 void _rotl(stack_t **top, unsigned int num);
+void _rotr(stack_t **top, unsigned int num);
 #endif

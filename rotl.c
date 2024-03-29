@@ -7,6 +7,8 @@
 void _rotl(stack_t **top, unsigned int num)
 {
 	stack_t *tmp = NULL;
+	stack_t *last = NULL;
+
 	(void)num;
 
 	if (*top != NULL && (*top)->next != NULL)
@@ -15,7 +17,7 @@ void _rotl(stack_t **top, unsigned int num)
 		*top = (*top)->next;
 		(*top)->prev = NULL;
 
-		stack_t *last = *top;
+		last = *top;
 		while (last->next != NULL)
 		{
 			last = last->next;
@@ -26,3 +28,4 @@ void _rotl(stack_t **top, unsigned int num)
 		tmp->next = NULL;
 	}
 }
+
