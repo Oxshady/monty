@@ -8,6 +8,7 @@ void _pstr(stack_t **top, unsigned int num)
 {
 	stack_t *tmp = NULL;
 
+	(void)num;
 	tmp = (*top);
 	if (tmp != NULL)
 	{
@@ -25,8 +26,9 @@ void _pstr(stack_t **top, unsigned int num)
 				}
 				tmp = tmp->next;
 			}
-			putchar('\n');		
+			putchar('\n');
 		}
-	}else
+	}
+	else
 		putchar('\n');
 }
