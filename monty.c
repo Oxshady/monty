@@ -17,6 +17,7 @@ instruction_t operations[] = {
 	{"mul", &_mul},
 	{"mod", &_mod},
 	{"pchar", &_pchar},
+	{"pstr", &_pstr},
 	{NULL, NULL}};
 
 stack_t *stack = NULL;
@@ -226,6 +227,19 @@ int main(int argc, char **argv)
 				while (operations[co].opcode != NULL)
 				{
 					if (strcmp(operations[co].opcode, "pchar") == 0)
+					{
+						operations[co].f(&stack, line);
+						break;
+					}
+					co++;
+				}
+				co = 0;
+			}
+			else if (strcmp(tokens[t], "pstr") == 0)
+			{
+				while (operations[co].opcode != NULL)
+				{
+					if (strcmp(operations[co].opcode, "pstr") == 0)
 					{
 						operations[co].f(&stack, line);
 						break;
